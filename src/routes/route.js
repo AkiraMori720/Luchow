@@ -4,9 +4,6 @@ import { Route } from "react-router-dom";
 const AppRoute = ({
   component: Component,
   layout: Layout,
-  isAuthProtected,
-  isAdminProtected,
-  user,
   ...rest
 }) => (
   <Route
@@ -14,7 +11,7 @@ const AppRoute = ({
     render={props => {
 
       return (
-        <Layout>
+        <Layout {...props}>
           <Component {...props} />
         </Layout>
       );
