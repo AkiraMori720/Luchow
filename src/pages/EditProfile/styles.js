@@ -2,8 +2,11 @@ import styled from 'styled-components';
 import {PhotoCamera} from "@styled-icons/material";
 
 export const Container = styled.div`
-    margin 48px auto;
     max-width: 1200px;
+    margin: 48px 20px;
+  @media (min-width: 1200px){
+    margin: 48px auto;
+  }
 `;
 
 export const Title = styled.div`

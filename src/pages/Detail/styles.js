@@ -5,21 +5,39 @@ import {Close} from "@styled-icons/material/Close";
 import {Info} from "@styled-icons/material/Info";
 import {AccessTimeFilled} from "@styled-icons/material";
 import {Tag} from "@styled-icons/fa-solid/Tag";
+import {Heart as HeartFill} from "@styled-icons/fa-solid/Heart";
+import {Mail} from "@styled-icons/feather/Mail";
+import {Twitter} from "@styled-icons/bootstrap/Twitter";
+import {Telegram} from "@styled-icons/bootstrap/Telegram";
 
 export const Container = styled.div`
-    display: flex;
+    display: block;
     margin 48px auto;
     max-width: 1200px;
+  @media (min-width: 1200px){
+    display flex;
+  }
 `;
 
 export const ImageContainer = styled.div`
+    padding: 0 12px;
+    @media (min-width: 1200px){
+      padding: 0;
+    }
+`;
 
+export const ImageContent = styled.div`
+    text-align: center;
 `;
 
 export const NftImage = styled.img`
+    height: 320px;
+    height: 320px;
+    border-radius: 8px;
+  @media (min-width: 768px){
     width: 586px;
     height: 586px;
-    border-radius: 8px;
+  }
 `;
 
 export const NftType = styled.div`
@@ -67,8 +85,14 @@ export const TokenId = styled.div`
 `;
 
 export const DetailContainer = styled.div`
-    margin-left: 40px;
+    margin-left: 0;
+    padding: 12px;
+        
     flex-grow: 1;
+    @media (min-width: 1200px){
+        margin-left: 40px;
+      padding: 0;
+    }
 `;
 
 export const Header = styled.div`
@@ -124,6 +148,38 @@ export const NftCategory = styled.div`
 export const HeaderRight = styled.div`
     display: flex;
     align-items: center;
+    position: relative;
+`;
+
+export const DropDownMenus = styled.div`
+    background: white;
+    width: 240px;
+    position: absolute;
+    bottom: -144px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 15px;
+    right: 0;
+`;
+
+export const DropDownMenu = styled.div`
+    padding 12px 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover {
+        background-color: #e3e3e3;
+    }
+`;
+
+export const TelegramIcon = styled(Telegram)`
+    margin-right: 8px;
+`;
+
+export const TwitterIcon = styled(Twitter)`
+    margin-right: 8px;
+`;
+
+export const EmailIcon = styled(Mail)`
+    margin-right: 8px;
 `;
 
 export const Favorite = styled.div`
@@ -134,6 +190,12 @@ export const Favorite = styled.div`
 export const FavouritesCount = styled.div`
     font-size: 10px;
 `;
+
+export const LoveFillIcon = styled(HeartFill)`
+    color: #F0B90B;
+`;
+
+
 export const LoveIcon = styled(Heart)`
 
 `;
@@ -163,6 +225,7 @@ export const CreatorImage = styled.img`
     width: 48px;
     height: 48px;
     border-radius: 24px;
+    cursor: pointer;
 `;
 export const CreatorName = styled.div`
     font-weight: bold;
@@ -181,8 +244,11 @@ export const Caption = styled.div`
 `;
 export const StatusContainer = styled.div`
     margin-top: 20px;
-    display: flex;
+    display: block;
     justify-content: space-between;
+  @media (min-width: 768px){
+    display flex;
+  }
 `;
 
 export const CurrentBid = styled.div`
@@ -226,8 +292,11 @@ export const UsdPrice = styled.span`
 `;
 
 export const ActionContainer = styled.div`
-    display: flex;
+    display: block;
     margin-top: 20px;
+  @media (min-width: 480px){
+    display flex;
+  }
 `;
 
 export const Action = styled.div`
@@ -236,6 +305,7 @@ export const Action = styled.div`
     margin-right: 12px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 8px;
 `;
 
 export const Others = styled.div`
@@ -264,6 +334,7 @@ export const BidTime = styled.div`
 
 export const Times = styled.div`
     display: flex;
+    justify-content: flex-end;
 `;
 
 export const Time = styled.div`
@@ -326,6 +397,7 @@ export const BidderImage = styled.img`
     width: 32px;
     height: 32px;
     border-radius: 16px;
+    cursor: pointer
 `;
 
 export const BidderContent = styled.div`
@@ -404,6 +476,7 @@ export const ProvenanceContent = styled.div`
 export const ProvenanceName = styled.div`
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
     span {
         font-size: 16px;
         color: grey;    
@@ -459,9 +532,18 @@ export const BidPrice = styled.div`
     justify-content: space-between;
 `;
 
-export const ModalMainPrice = styled.div`
+export const ModalMainPrice = styled.input`
     font-size: 48px;
     line-height: 40px;
+    flex-grow: 1;
+    width: 250px;
+    text-align: center;
+    border: unset;
+    outline: none;
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 `;
 
 export const BidUsd = styled.div`
@@ -612,11 +694,15 @@ export const InputUnit = styled.div`
 `;
 
 export const SelectRow = styled.div`
-    display: flex;
-    justify-content: space-between
+    display: block;
+    justify-content: space-between;
+  @media (min-width: 480px){
+    display flex;
+  }
 `;
 
 export const SelectField = styled.div`
+    margin-top: 8px;
     .input-picker{
         width: 210px;
         margin-top: 12px;
@@ -632,6 +718,7 @@ export const StartingDateSelect = styled.select`
     border-bottom: 1px solid rgb(234, 236, 239);
     font-size: 20px;
     padding: 8px;
+    width: 100%;
     &:focus-visible{
         outline: unset;
     }

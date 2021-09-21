@@ -41,16 +41,20 @@ class Profile extends React.Component {
             <S.Container>
                 <S.ProfileInfo>
                     <S.ProfileAvatarContainer>
-                        <S.ProfileAvatar src={"/images/profile.png"}/>
-                        <S.VerifiedStatusIcon size={40} color={'#c99400'}/>
+                        <S.AvatarContent>
+                            <S.ProfileAvatar src={"/images/profile.png"}/>
+                            <S.VerifiedStatusIcon size={40} color={'#c99400'}/>
+                        </S.AvatarContent>
                     </S.ProfileAvatarContainer>
                     <S.ProfileInfoContent>
                         <S.Name>Anonymous_x0bl</S.Name>
                         <S.AddressContainer>
-                            <S.Address>
-                                0x1cb1351dwe5ge16ge48
-                            </S.Address>
-                            <S.CopyActionIcon color={"white"} size={14}/>
+                            <S.AddressContent>
+                                <S.Address>
+                                    0x1cb1351dwe5ge16ge48
+                                </S.Address>
+                                <S.CopyActionIcon color={"white"} size={14}/>
+                            </S.AddressContent>
                             <S.Email>
                                 hu***@outlook.com
                             </S.Email>

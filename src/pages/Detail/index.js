@@ -51,13 +51,16 @@ class Detail extends React.Component {
             ],
             showPlaceBidModal: false,
             showBuyNowModal: false,
-            showPutMarketPlace: true,
+            showPutMarketPlace: false,
             put_type: 'timed',
             put_price: 0,
             starting_date: 'after',
             expiration_date: "1",
             starting_date_value: null,
             expiration_date_value: null,
+            is_favourite: false,
+            bid_price: 208.928,
+            showDropDown: false,
         }
     }
 
@@ -102,12 +105,17 @@ class Detail extends React.Component {
             expiration_date,
             starting_date_value,
             expiration_date_value,
+            is_favourite,
+            bid_price,
+            showDropDown
         } = this.state;
         return (
             <S.Container>
                 <S.ImageContainer>
-                    <S.NftImage
-                        src={"https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png"}/>
+                    <S.ImageContent>
+                        <S.NftImage
+                            src={"https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png"}/>
+                    </S.ImageContent>
                     <S.NftType>
                         {type}
                     </S.NftType>
@@ -132,11 +140,23 @@ class Detail extends React.Component {
                             <S.NftCategory>{category}</S.NftCategory>
                         </S.HeaderLeft>
                         <S.HeaderRight>
-                            <S.Favorite>
-                                <S.LoveIcon size={20}/>
+                            <S.Favorite onClick={() => this.setState({is_favourite: !is_favourite, favourites: is_favourite?this.state.favourites - 1:this.state.favourites + 1})}>
+                                {
+                                    is_favourite?
+                                    <S.LoveFillIcon size={20}/>
+                                    : <S.LoveIcon size={20}/>
+                                }
                                 <S.FavouritesCount>{favourites}</S.FavouritesCount>
                             </S.Favorite>
-                            <S.ShareIcon size={24}/>
+                            <S.ShareIcon size={24} onClick={() => this.setState({showDropDown: true})}/>
+                            {
+                                showDropDown &&
+                                <S.DropDownMenus>
+                                    <S.DropDownMenu onClick={() => { this.setState({showDropDown: false})}}><S.TwitterIcon size={16}/>Twitter</S.DropDownMenu>
+                                    <S.DropDownMenu onClick={() => { this.setState({showDropDown: false})}}><S.TelegramIcon size={16}/>Telegram</S.DropDownMenu>
+                                    <S.DropDownMenu onClick={() => { this.setState({showDropDown: false})}}><S.EmailIcon size={16}/>Email</S.DropDownMenu>
+                                </S.DropDownMenus>
+                            }
                         </S.HeaderRight>
                     </S.Header>
                     <S.Collection>
@@ -149,14 +169,14 @@ class Detail extends React.Component {
                     <S.OwnerContainer>
                         <S.Owners>
                             <S.Owner>
-                                <S.CreatorImage src={creator_avatar}/>
+                                <S.CreatorImage src={creator_avatar} onClick={() => this.props.history.push('Profile')}/>
                                 <S.CreatorContent>
                                     <S.OptionText>Creator</S.OptionText>
                                     <S.CreatorName>{creator_name}</S.CreatorName>
                                 </S.CreatorContent>
                             </S.Owner>
                             <S.Owner>
-                                <S.CreatorImage src={owner_avatar}/>
+                                <S.CreatorImage src={owner_avatar} onClick={() => this.props.history.push('Profile')}/>
                                 <S.CreatorContent>
                                     <S.OptionText>Creator</S.OptionText>
                                     <S.CreatorName>{owner_name}</S.CreatorName>
@@ -219,7 +239,7 @@ class Detail extends React.Component {
                                     <S.TabContentContainer>
                                         <S.InfoList>
                                             {
-                                                histories.map((h, index) => <History key={index} {...h} />)
+                                                histories.map((h, index) => <History key={index} {...h} onOpen={() => this.props.history.push('Profile')}/>)
                                             }
                                         </S.InfoList>
                                         <S.ViewMore>
@@ -232,7 +252,7 @@ class Detail extends React.Component {
                                 <S.TabContentContainer>
                                     <S.InfoList>
                                         {
-                                            provenances.map((h, index) => <Provenance key={index} {...h} />)
+                                            provenances.map((h, index) => <Provenance key={index} {...h}  onOpen={() => this.props.history.push('Profile')}/>)
                                         }
                                     </S.InfoList>
                                     <S.ViewMore>
@@ -282,7 +302,7 @@ class Detail extends React.Component {
                         </S.ModalRow>
                         <S.BidPrice>
                             <S.ModalLabel>Current bid</S.ModalLabel>
-                            <S.ModalMainPrice>{price}</S.ModalMainPrice>
+                            <S.ModalMainPrice type={"number"} value={bid_price} onChange={event => this.setState({bid_price : event.target.value})}/>
                             <S.UnitContainer>
                                 <S.CoinImage src={"/images/erc721.png"}/>
                                 <S.Unit>{unit}</S.Unit>
@@ -294,7 +314,7 @@ class Detail extends React.Component {
                         <S.ModalRow>
                             <S.ModalLabel>Available</S.ModalLabel>
                             <S.ModalPrice>0.049738 BUSD</S.ModalPrice>
-                        </S.ModalRow>
+                        </S.ModalRow>3463246
                         <S.ModalAction>
                             <S.ModalButton onClick={() => this.setState({showCreateCollectionDlg: false})}>Place a Bid</S.ModalButton>
                         </S.ModalAction>

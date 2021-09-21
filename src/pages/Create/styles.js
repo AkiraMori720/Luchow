@@ -127,6 +127,10 @@ export const Input = styled.input`
     &:focus-visible{
         outline: unset;
     }
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 `;
 
 export const Option = styled.div`

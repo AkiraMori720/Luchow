@@ -69,16 +69,16 @@ class Create extends React.Component {
                 <S.Form>
                     <S.Field>
                         <S.label>Title</S.label>
-                        <S.Input value={title} placeholder="e.g. 'Redeemable T-Shirt with logo'"/>
+                        <S.Input value={title} placeholder="e.g. 'Redeemable T-Shirt with logo'" onChange={event => this.setState({title : event.target.value})}/>
                     </S.Field>
                     <S.Field>
                         <S.label>Description <span> (Optional)</span></S.label>
-                        <S.Input value={description} placeholder="e.g. 'After purchasing you`ll be able to get the real T-shirt"/>
+                        <S.Input value={description} placeholder="e.g. 'After purchasing you`ll be able to get the real T-shirt" onChange={event => this.setState({description : event.target.value})}/>
                         <S.Option>With preserved line-breaks</S.Option>
                     </S.Field>
                     <S.Field>
                         <S.label>Royalties</S.label>
-                        <S.Input type={"number"} value={royalties}/>
+                        <S.Input type={"number"} value={royalties} onChange={event => this.setState({royalties : event.target.value})}/>
                         <S.Option>Suggested: 10%, Minimum is 5%, Maximum is 20%</S.Option>
                     </S.Field>
                     <S.Field>

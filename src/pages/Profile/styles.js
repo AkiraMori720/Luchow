@@ -8,13 +8,20 @@ export const Container = styled.div`
 `;
 
 export const ProfileInfo = styled.div`
-    display: flex;
+    display: block;
+  @media (min-width: 768px){
+    display flex;
+  }
 `;
 
 export const ProfileAvatarContainer = styled.div`
     display: flex;
     align-items; center;
     justify-content: center;
+    position: relative;
+`;
+
+export const AvatarContent = styled.div`
     position: relative;
 `;
 
@@ -45,6 +52,14 @@ export const Name = styled.div`
 export const AddressContainer = styled.div`
     display: flex;
     align-items: center;
+    display: block;
+    @media (min-width: 768px){
+    display flex;
+  }
+`;
+
+export const AddressContent = styled.div`
+    display: flex;
 `;
 
 export const Address = styled.div`
@@ -68,16 +83,18 @@ export const Caption = styled.div`
 `;
 
 export const ProfileActions = styled.div`
-
+    text-align: center;
 `;
 
 export const EditProfileBtn = styled.div`
     background-image: linear-gradient(180deg,#F8D12F 0%,#F0B90B 100%);
     padding: 12px 24px;
     font-size: 24px;
-    margin-left: 12px;
     border-radius: 4px;
     cursor: pointer;
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 12px;
 `;
 
 export const TabContainer = styled.div`
@@ -87,6 +104,7 @@ export const TabContainer = styled.div`
 
 export const TabBar = styled.div`
     display: flex;
+    flex-wrap: wrap;
 `;
 
 
@@ -105,6 +123,7 @@ export const tab = styled.div`
 
 export const TabContent = styled.div`
     display: flex;
+    justify-content: center;
     margin-top: 40px;
     width: 100%;
     flex-wrap: wrap;

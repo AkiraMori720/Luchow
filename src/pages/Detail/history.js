@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './styles';
 
-const History = React.memo(({name, time, price, usd, unit}) => (
- <S.HistoryContainer>
-     <S.BidderImage src={"/images/profile.png"}/>
+const History = React.memo(({name, time, price, usd, unit, onOpen}) => (
+ <S.HistoryContainer >
+     <S.BidderImage src={"/images/profile.png"} onClick={onOpen}/>
      <S.BidderContent>
          <S.BidderName>{name} <span>placed a bid</span></S.BidderName>
          <S.BidTimeAgo>{time}</S.BidTimeAgo>
