@@ -702,9 +702,11 @@ export const SelectRow = styled.div`
 `;
 
 export const SelectField = styled.div`
-    margin-top: 8px;
+    width: 46%;
+    padding: 8px 12px 0 12px;
+    
     .input-picker{
-        width: 210px;
+        width: 190px;
         margin-top: 12px;
         border-radius: 8px;
         padding: 8px;
