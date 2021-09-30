@@ -38,25 +38,24 @@ export const SlideContainer = styled.div`
 
 export const SlideInfo = styled.div`
     position: absolute;
-    bottom: 20px;
+    bottom: 4px;
     left: 0;
     width: 100%;
     .title{
         color: white;
         font-size: 28px;
         font-weight: bold;
-        padding: 0 12px;
+        padding: 0 8px;
     }
     .bottomInfo{
-        padding: 8px 12px;
-       display: flex;
-       justify-content: space-between;
+        padding: 4px 8px;
         .createName{
             color: white;
         }
         .bidTimeContainer{
-           display: flex;
-           align-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
             color: white;
             .bidTime{
                 background: black;
@@ -65,6 +64,22 @@ export const SlideInfo = styled.div`
             }
         }
     }
+        
+  @media (min-width: 768px){
+    bottom: 20px;
+    .title{
+       font-size: 20px;
+        padding: 0 8px;
+    }
+    .bottomInfo{
+        padding: 8px 12px;
+       display: flex;
+       justify-content: space-between;
+       .bideTime{
+            text-align: right;
+       }
+   }
+  }
 `;
 
 export const Filter = styled.div`
