@@ -22,7 +22,7 @@ export const HeaderContainer = styled.div`
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 999;
     
   @media (min-width: 768px){
     display flex;

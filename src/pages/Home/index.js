@@ -2,6 +2,8 @@ import React from 'react';
 import * as S from './styles';
 import Nft from './nft';
 import qs from 'query-string';
+import Carousel from "react-spring-3d-carousel";
+import { config } from "react-spring";
 
 const SELECT_CATEGORIES = [
     {value: "1", text: 'Preminum'},
@@ -58,6 +60,14 @@ class Home extends React.Component {
             order_by: 'recently',
             mainCategory: '',
             favourites: [],
+            goToSlide: 2,
+            topNfts: [
+                {id: 1, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+                {id: 2, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+                {id: 3, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+                {id: 4, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+                {id: 5, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+            ],
             nfts: [
                 {id: 1, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', creator_avatar: 'https://public.nftstatic.com/static/nft/zipped/6e91fc4fb7e443508f0c30470d802760_zipped.jpeg', creator_name: 'RaviconArt'},
                 {id: 2, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', creator_avatar: 'https://public.nftstatic.com/static/nft/zipped/6e91fc4fb7e443508f0c30470d802760_zipped.jpeg', creator_name: 'RaviconArt'},
@@ -174,12 +184,38 @@ class Home extends React.Component {
     }
 
     render() {
-        const {showFilter, filters, select_filters, mainCategory, nfts, order_by, favourites} = this.state;
+        const {showFilter, filters, select_filters, mainCategory, topNfts, nfts, order_by, favourites, goToSlide} = this.state;
+        const slides = topNfts.map((n, index) => {
+            return {
+                key: n.id,
+                content: <S.SlideContainer onClick={() => {
+                    console.log('click', index);
+                    this.setState({goToSlide: index});
+                }}>
+                    <img src={n.thumbnail} alt={n.id}/>
+                    <S.SlideInfo>
+                        <div className={'title'}>{n.title}</div>
+                        <div className={'bottomInfo'}>
+                            <div className={"createName"}>{n.creator_name}</div>
+                            <div className={"bidTimeContainer"}>
+                                <div className={"bidTime"}>00</div>:<div className={"bidTime"}>00</div>:<div className={"bidTime"}>00</div>:<div className={"bidTime"}>00</div>
+                            </div>
+                        </div>
+                    </S.SlideInfo>
+                </S.SlideContainer>
+            }
+        })
         return (
             <S.Container>
                 <S.Container>
                     <S.Header>
-
+                        <Carousel
+                            slides={slides}
+                            goToSlide={goToSlide}
+                            offsetRadius={3}
+                            showNavigation={false}
+                            animationConfig={config.gentle}
+                        />
                     </S.Header>
                     <S.Filter>
                         <S.FilterLeft>

@@ -15,7 +15,56 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-    
+   height: 200px;
+   @media (min-width: 768px){
+        height: 500px;
+    }
+`;
+
+export const SlideContainer = styled.div`
+    cursor: pointer;
+    position: relative;
+    img{
+        width: 200px;
+        height: 200px;
+    }
+    @media (min-width: 768px){
+     img{
+            width: 500px;
+            height: 500px;
+        }
+    }
+`;
+
+export const SlideInfo = styled.div`
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    .title{
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        padding: 0 12px;
+    }
+    .bottomInfo{
+        padding: 8px 12px;
+       display: flex;
+       justify-content: space-between;
+        .createName{
+            color: white;
+        }
+        .bidTimeContainer{
+           display: flex;
+           align-items: center;
+            color: white;
+            .bidTime{
+                background: black;
+                padding: 4px;
+                border-radius: 4px;
+            }
+        }
+    }
 `;
 
 export const Filter = styled.div`
