@@ -34,24 +34,39 @@ export const Header = styled.div`
         }
     }
     .slider_index_0{
-        left: 0;
+        left: 10%;
         position: absolute;
+       @media (min-width: 768px){
+            left: 0;
+        }
     }
     .slider_index_1{
-        left: 15%;
+        left: 18%;
         position: absolute;
+        @media (min-width: 768px){
+            left: 15%;
+        }
     }
     .slider_index_2{
-        left: 30%;
+        left: 26%;
         position: absolute;
+        @media (min-width: 768px){
+            left: 30%;
+        }
     }
     .slider_index_3{
-        left: 45%;
+        left: 34%;
         position: absolute;
+        @media (min-width: 768px){
+            left: 45%;
+        }
     }
     .slider_index_4{
-        left: 60%;
+        left: 40%;
         position: absolute;
+        @media (min-width: 768px){
+            left: 60%;
+        }
     }
     .slider_0{
         transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);

@@ -186,7 +186,7 @@ class Home extends React.Component {
     render() {
         const {showFilter, filters, select_filters, mainCategory, topNfts, nfts, order_by, favourites, activeIndex} = this.state;
         const slides = topNfts.map((n, index) => {
-            return <S.SlideContainer className={`slider_index_${index} slider_` + Math.abs(activeIndex - index) + (activeIndex > index?'-1': '')} onMouseEnter={() => {
+            return <S.SlideContainer key={index} className={`slider_index_${index} slider_` + Math.abs(activeIndex - index) + (activeIndex > index?'-1': '')} onClick={() => this.onOpenDetail(n)} onMouseEnter={() => {
                     console.log('click', index);
                     this.setState({activeIndex: index});
                 }}>
