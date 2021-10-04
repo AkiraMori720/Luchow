@@ -16,17 +16,16 @@ export const Container = styled.div`
 
 export const Header = styled.div`
    height: 200px;
+    position: relative;
    @media (min-width: 768px){
         height: 500px;
     }
-`;
-
-export const SlideContainer = styled.div`
-    cursor: pointer;
-    position: relative;
+    
     img{
         width: 200px;
         height: 200px;
+        border-radius: 8px;
+        box-shadow: rgb(0 0 0 / 15%) 2px 2px 0px;
     }
     @media (min-width: 768px){
      img{
@@ -34,6 +33,135 @@ export const SlideContainer = styled.div`
             height: 500px;
         }
     }
+    .slider_index_0{
+        left: 0;
+        position: absolute;
+    }
+    .slider_index_1{
+        left: 15%;
+        position: absolute;
+    }
+    .slider_index_2{
+        left: 30%;
+        position: absolute;
+    }
+    .slider_index_3{
+        left: 45%;
+        position: absolute;
+    }
+    .slider_index_4{
+        left: 60%;
+        position: absolute;
+    }
+    .slider_0{
+        transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+        z-index: 5;
+        position: absolute;
+    }
+    .slider_1{
+        transform: translate3d(20px, 0px, 0px) scale3d(0.9, 0.9, 1);
+        z-index: 4;
+        .backCover{
+            background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+    .slider_1-1{
+        transform: translate3d(-20px, 0px, 0px) scale3d(0.9, 0.9, 1);
+        z-index: 4;
+        .backCover{
+            background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+     .slider_2{
+        transform: translate3d(40px, 0px, 0px) scale3d(0.8, 0.8, 1);
+        z-index: 3;
+        .backCover{
+           background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+     .slider_2-1{
+        transform: translate3d(-40px, 0px, 0px) scale3d(0.8, 0.8, 1);
+        z-index: 3;
+        .backCover{
+           background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+     .slider_3{
+        transform: translate3d(60px, 0px, 0px) scale3d(0.7, 0.7, 1);
+        z-index: 2;
+        .backCover{
+           background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+     .slider_3-1{
+        transform: translate3d(-60px, 0px, 0px) scale3d(0.7, 0.7, 1);
+        z-index: 2;
+        .backCover{
+           background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+     .slider_4{
+        transform: translate3d(80px, 0px, 0px) scale3d(0.6, 0.6, 1);
+        z-index: 1;
+        .backCover{
+            background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+     .slider_4-1{
+        transform: translate3d(-80px, 0px, 0px) scale3d(0.6, 0.6, 1);
+        z-index: 1;
+        .backCover{
+            background: linear-gradient(rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.5) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+   
+`;
+
+export const SlideContainer = styled.div`
+    cursor: pointer;
+    position: relative;
+    transform-origin: 50% 50% 0px;
+    transition: transform 500ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
 `;
 
 export const SlideInfo = styled.div`

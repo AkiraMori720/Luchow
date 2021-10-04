@@ -60,7 +60,7 @@ class Home extends React.Component {
             order_by: 'recently',
             mainCategory: '',
             favourites: [],
-            goToSlide: 2,
+            activeIndex: 2,
             topNfts: [
                 {id: 1, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
                 {id: 2, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
@@ -184,13 +184,11 @@ class Home extends React.Component {
     }
 
     render() {
-        const {showFilter, filters, select_filters, mainCategory, topNfts, nfts, order_by, favourites, goToSlide} = this.state;
+        const {showFilter, filters, select_filters, mainCategory, topNfts, nfts, order_by, favourites, activeIndex} = this.state;
         const slides = topNfts.map((n, index) => {
-            return {
-                key: n.id,
-                content: <S.SlideContainer onClick={() => {
+            return <S.SlideContainer className={`slider_index_${index} slider_` + Math.abs(activeIndex - index) + (activeIndex > index?'-1': '')} onMouseEnter={() => {
                     console.log('click', index);
-                    this.setState({goToSlide: index});
+                    this.setState({activeIndex: index});
                 }}>
                     <img src={n.thumbnail} alt={n.id}/>
                     <S.SlideInfo>
@@ -202,20 +200,15 @@ class Home extends React.Component {
                             </div>
                         </div>
                     </S.SlideInfo>
+                    <div className={"backCover"}/>
                 </S.SlideContainer>
-            }
-        })
+
+        });
         return (
             <S.Container>
                 <S.Container>
                     <S.Header>
-                        <Carousel
-                            slides={slides}
-                            goToSlide={goToSlide}
-                            offsetRadius={3}
-                            showNavigation={false}
-                            animationConfig={config.gentle}
-                        />
+                        {slides}
                     </S.Header>
                     <S.Filter>
                         <S.FilterLeft>
