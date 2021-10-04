@@ -45,6 +45,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
 
+        this.startX = 0;
         this.state = {
             showFilter: false,
             filters: {
@@ -65,8 +66,8 @@ class Home extends React.Component {
                 {id: 1, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
                 {id: 2, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
                 {id: 3, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
-                {id: 4, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
-                {id: 5, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+                // {id: 4, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
+                // {id: 5, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', thumbnail: 'https://public.nftstatic.com/static/nft/zipped/de5e3d1eddf040e998c80c9269506672_zipped.png', creator_name: 'RaviconArt'},
             ],
             nfts: [
                 {id: 1, type: 'image', bid_ends: '12:12:12', favourites: 1, title: 'Boston Punks 59', network: 'BSC', price: 130.00, unit: 'BUSD', usd: '129.97', creator_avatar: 'https://public.nftstatic.com/static/nft/zipped/6e91fc4fb7e443508f0c30470d802760_zipped.jpeg', creator_name: 'RaviconArt'},
@@ -185,11 +186,24 @@ class Home extends React.Component {
 
     render() {
         const {showFilter, filters, select_filters, mainCategory, topNfts, nfts, order_by, favourites, activeIndex} = this.state;
-        const slides = topNfts.map((n, index) => {
+        const slides = topNfts.map((n, i) => {
+            const index = i + Math.floor((5 - topNfts.length)/2);
             return <S.SlideContainer key={index} className={`slider_index_${index} slider_` + Math.abs(activeIndex - index) + (activeIndex > index?'-1': '')} onClick={() => this.onOpenDetail(n)} onMouseEnter={() => {
                     console.log('click', index);
                     this.setState({activeIndex: index});
-                }}>
+                }}
+                onTouchStart={event => {this.startX = event.touches[0].clientX}}
+                onTouchMove={event => {
+                    if(!this.startX) return;
+                    if(event.touches[0].clientX - this.startX > 30 && activeIndex > Math.floor((5 - topNfts.length)/2)){
+                        this.setState({activeIndex: activeIndex - 1});
+                        this.startX = 0;
+                    } else if(event.touches[0].clientX - this.startX < -30 && activeIndex < (topNfts.length - 1 + Math.floor((5 - topNfts.length)/2))){
+                        this.setState({activeIndex: activeIndex + 1})
+                        this.startX = 0;
+                    }
+                }}
+            >
                     <img src={n.thumbnail} alt={n.id}/>
                     <S.SlideInfo>
                         <div className={'title'}>{n.title}</div>
